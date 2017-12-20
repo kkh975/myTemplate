@@ -2,10 +2,100 @@
 
 
 /*
+ * 공통
+ */
+.hide { display:none; }
+
+.aLeft { text-align:left; }
+.aRight { text-align:right; }
+.aCenter { text-align:center; }
+
+.margin0 { margin:0px; }
+.margin5 { margin:5px; }
+.margin10 { margin:10px; }
+.margin20 { margin:20px; }
+.margin30 { margin:30px; }
+.margin40 { margin:40px; }
+.margin50 { margin:50px; }
+
+.marginTop0 { margin-top:0px; }
+.marginTop5 { margin-top:5px; }
+.marginTop10 { margin-top:10px; }
+.marginTop20 { margin-top:20px; }
+.marginTop30 { margin-top:30px; }
+.marginTop40 { margin-top:40px; }
+.marginTop50 { margin-top:50px; }
+
+.marginBottom0 { margin-bottom:0px; }
+.marginBottom5 { margin-bottom:5px; }
+.marginBottom10 { margin-bottom:10px; }
+.marginBottom20 { margin-bottom:20px; }
+.marginBottom30 { margin-bottom:30px; }
+.marginBottom40 { margin-bottom:40px; }
+.marginBottom50 { margin-bottom:50px; }
+
+.marginLeft0 { margin-left:0px; }
+.marginLeft5 { margin-left:5px; }
+.marginLeft10 { margin-left:10px; }
+.marginLeft20 { margin-left:20px; }
+.marginLeft30 { margin-left:30px; }
+.marginLeft40 { margin-left:40px; }
+.marginLeft50 { margin-left:50px; }
+
+.marginRight0 { margin-right:0px; }
+.marginRight5 { margin-right:5px; }
+.marginRight10 { margin-right:10px; }
+.marginRight20 { margin-right:20px; }
+.marginRight30 { margin-right:30px; }
+.marginRight40 { margin-right:40px; }
+.marginRight50 { margin-right:50px; }
+
+.padding0 { padding:0px; }
+.padding5 { padding:5px; }
+.padding10 { padding:10px; }
+.padding20 { padding:20px; }
+.padding30 { padding:30px; }
+.padding40 { padding:40px; }
+.padding50 { padding:50px; }
+
+.paddingTop0 { padding-top:0px; }
+.paddingTop5 { padding-top:5px; }
+.paddingTop10 { padding-top:10px; }
+.paddingTop20 { padding-top:20px; }
+.paddingTop30 { padding-top:30px; }
+.paddingTop40 { padding-top:40px; }
+.paddingTop50 { padding-top:50px; }
+
+.paddingBottom0 { padding-bottom:0px; }
+.paddingBottom5 { padding-bottom:5px; }
+.paddingBottom10 { padding-bottom:10px; }
+.paddingBottom20 { padding-bottom:20px; }
+.paddingBottom30 { padding-bottom:30px; }
+.paddingBottom40 { padding-bottom:40px; }
+.paddingBottom50 { padding-bottom:50px; }
+
+.paddingLeft0 { padding-left:0px; }
+.paddingLeft5 { padding-left:5px; }
+.paddingLeft10 { padding-left:10px; }
+.paddingLeft20 { padding-left:20px; }
+.paddingLeft30 { padding-left:30px; }
+.paddingLeft40 { padding-left:40px; }
+.paddingLeft50 { padding-left:50px; }
+
+.paddingRight0 { padding-right:0px; }
+.paddingRight5 { padding-right:5px; }
+.paddingRight10 { padding-right:10px; }
+.paddingRight20 { padding-right:20px; }
+.paddingRight30 { padding-right:30px; }
+.paddingRight40 { padding-right:40px; }
+.paddingRight50 { padding-right:50px; }
+
+
+/*
  * 버튼
  */
 .btn { display:inline-block; padding:0.7rem 1rem 0.8rem; border:none; border:1px solid #488aff; background:#488aff; color:#fff; white-space:nowrap; font-size:1.2rem; }
-.btn[disabled] { opacity:0.4 }
+.btn[disabled] { opacity:0.4; -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=40)"; }
 
 .btn.btn_small { padding: 0.4rem 0.5rem 0.5rem; }
 .btn.btn_middle { padding: 0.7rem 0.5rem 0.8rem; }
@@ -39,8 +129,9 @@
 
 /*
  * grid
+ * TODO, flex 추가
  */
-.col > * { float:left; }
+.col > * { /* display:flex; flex-direction:row; */ float:left; }
 .col.col-2 > *  { width:50%; }
 .col.col-3 > *  { width:33.333333333333333%; }
 .col.col-4 > *  { width:25%; }
@@ -57,3 +148,20 @@
  * input
  */
 .input {  }
+
+
+/*
+ * table
+ */
+.table table { table-layout:fixed; width:100%; border-collapse:collapse; border-spacing:0px; }
+.table th,
+.table td { }
+.table tbody th,
+.table tbody td { border-top:1px solid #ddd; border-bottom:1px solid #ddd; }
+
+.table .bl { border-left:1px solid #ddd; }
+.table .br { border-right:1px solid #ddd; }
+
+.table.table_list {  }
+
+.table.table_form {  }
