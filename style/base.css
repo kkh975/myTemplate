@@ -4,10 +4,21 @@
 * { margin:0; padding:0; }
 html, body { font-size:12px; line-height:1em; }
 
+article, aside, details, figcaption, figure, footer, header, hgroup, menu, nav, section { display:block; }
+
 fieldset { border:0px; }
+ol, ul { list-style:none; }
+
+blockquote, q { quotes: none; }
+blockquote:before, 
+blockquote:after, 
+q:before, 
+q:after { content: ''; content: none; }
 
 a { text-decoration:none; }
-a, button { cursor:pointer; font-size:inherit; font-family:inherit; color:inherit; line-height:1em; }
+a, button { cursor:pointer; font-size:inherit; font:inherit; color:inherit; }
+
+table { border-collapse: collapse; border-spacing: 0; }
 
 
 /* 

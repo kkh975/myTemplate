@@ -4,105 +4,110 @@
 	<meta charset="UTF-8">
 	<title>Modal | myComponent</title>
 	<link rel="stylesheet" type="text/css" href="style/base.css">
-	<link rel="stylesheet" type="text/css" href="style/guide.css">
 	<link rel="stylesheet" type="text/css" href="style/default_layout.css">
 	<link rel="stylesheet" type="text/css" href="style/default_component.css">
 	<script src="https://code.jquery.com/jquery-1.12.4.min.js" integrity="sha256-ZosEbRLbNQzLpnKIkEdrPv7lOy9C27hHQ+Xp8a4MxAQ=" crossorigin="anonymous"></script>
+
+	<!-- guide -->
+	<link rel="stylesheet" type="text/css" href="guide/style.css">
+	<script src="guide/script.js"></script>
 </head>
 <body>
 	
-<h1 class="guide_h1">Modal</h1>
-<p class="guide_p"></p>
+<div class="guide_wrap">
+	<h1 class="guide_h1">Modal</h1>
+	<p class="guide_p"></p>
 
 
-<script type="text/javascript">
-	$.fn.myModal = function( _option ){
-		return this.each( function(){
-			var $this = $( this )
-			var $target = $( $this.attr('href') )
-			var isOn = false;
-			var events;
-			
-			var option = $.extend({
-				activeEvent: 'click'
-			}, _option)
-			
-			// $target 없으면 종료
-			if ( $target.length == 0 ) {
-				console.warn('No target!')
-				return
-			}
+	<script type="text/javascript">
+		$.fn.myModal = function( _option ){
+			return this.each( function(){
+				var $this = $( this )
+				var $target = $( $this.attr('href') )
+				var isOn = false;
+				var events;
+				
+				var option = $.extend({
+					activeEvent: 'click'
+				}, _option)
+				
+				// $target 없으면 종료
+				if ( $target.length == 0 ) {
+					console.warn('No target!')
+					return
+				}
 
-			if (typeof(option.activeEvent) == 'string') {
-				events = option.activeEvent.split(',')
-			} else {
-				events = option.activeEvent
-			}
+				if (typeof(option.activeEvent) == 'string') {
+					events = option.activeEvent.split(',')
+				} else {
+					events = option.activeEvent
+				}
 
-			for (var i = events.length-1; i >= 0; i--) {
-				$this.on(events[i], function( e ){
-					if (e.type == 'click') {
-						e.preventDefault()
-					}
+				for (var i = events.length-1; i >= 0; i--) {
+					$this.on(events[i], function( e ){
+						if (e.type == 'click') {
+							e.preventDefault()
+						}
 
-					$target.toggle()
+						$target.toggle()
 
-					// 액션 종료 후 콜백
-					if (typeof(option.eventCallback) == 'function') {
-						option.eventCallback( e )
-					}
-				})
-			}
+						// 액션 종료 후 콜백
+						if (typeof(option.eventCallback) == 'function') {
+							option.eventCallback( e )
+						}
+					})
+				}
 
-			// 설치 후 콜백
-			if (typeof(option.installCallback) == 'function') {
-				option.installCallback()
-			}
-		})
-	}
-</script>
-
-
-<h2 class="guide_h2">Option</h2>
-<div class="guide_option">
-</div>
+				// 설치 후 콜백
+				if (typeof(option.installCallback) == 'function') {
+					option.installCallback()
+				}
+			})
+		}
+	</script>
 
 
-<h2 class="guide_h2">Use</h2>
-<div class="guide_option">
-</div>
-
-
-<h2 class="guide_h2">Test</h2>
-<div class="guide_test">
-
-	<a href="#modal" class="modal_link">팝업</a>
-	<div id="modal" class="modal_body">
-		<div class="modal_bg"></div><!-- 뒷 배경 존재시, 클릭 하면 닫기 -->
-		<div class="modal_content">
-			내용	
-		</div>
+	<h2 class="guide_h2">Option</h2>
+	<div class="guide_option">
 	</div>
 
-</div>
 
-<script type="text/javascript">
-	$('#tooltip_link1').myTooltip({
-		activeEvent: 'click',
-		installCallback: function() {
-			console.log( 'test' )
-		},
-		eventCallback: function( e ) {
-			console.log( 'test' )
-		}
-	})
-	$('#tooltip_link2').myTooltip({
-		activeEvent: ['mouseover', 'click', 'focus']
-	})
-	$('#tooltip_link3').myTooltip({
-		activeEvent: 'mouseover, click, focus'
-	})
-</script>
+	<h2 class="guide_h2">Use</h2>
+	<div class="guide_option">
+	</div>
+
+
+	<h2 class="guide_h2">Test</h2>
+	<div class="guide_test">
+
+		<a href="#modal" class="modal_link">팝업</a>
+		<div id="modal" class="modal_body">
+			<div class="modal_bg"></div><!-- 뒷 배경 존재시, 클릭 하면 닫기 -->
+			<div class="modal_content">
+				내용	
+			</div>
+		</div>
+
+	</div>
+
+	<script type="text/javascript">
+		$('#tooltip_link1').myTooltip({
+			activeEvent: 'click',
+			installCallback: function() {
+				console.log( 'test' )
+			},
+			eventCallback: function( e ) {
+				console.log( 'test' )
+			}
+		})
+		$('#tooltip_link2').myTooltip({
+			activeEvent: ['mouseover', 'click', 'focus']
+		})
+		$('#tooltip_link3').myTooltip({
+			activeEvent: 'mouseover, click, focus'
+		})
+	</script>
+</div>
 
 </body>
 </html>

@@ -153,7 +153,7 @@
 /*
  * table
  */
-.table table { table-layout:fixed; width:100%; border-collapse:collapse; border-spacing:0px; }
+.table table { table-layout:fixed; width:100%; }
 .table th,
 .table td { }
 .table tbody th,

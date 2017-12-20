@@ -4,10 +4,13 @@
 	<meta charset="UTF-8">
 	<title>Slide | myComponent</title>
 	<link rel="stylesheet" type="text/css" href="style/base.css">
-	<link rel="stylesheet" type="text/css" href="style/guide.css">
 	<link rel="stylesheet" type="text/css" href="style/default_layout.css">
 	<link rel="stylesheet" type="text/css" href="style/default_component.css">
 	<script src="https://code.jquery.com/jquery-1.12.4.min.js" integrity="sha256-ZosEbRLbNQzLpnKIkEdrPv7lOy9C27hHQ+Xp8a4MxAQ=" crossorigin="anonymous"></script>
+
+	<!-- guide -->
+	<link rel="stylesheet" type="text/css" href="guide/style.css">
+	<script src="guide/script.js"></script>
 
 	<!-- bxSlide(IE 지원) -->
 	<link rel="stylesheet" href="https://cdn.jsdelivr.net/bxslider/4.2.12/jquery.bxslider.css">
@@ -15,22 +18,23 @@
 </head>
 <body>
 
+<div class="guide_wrap">
+	<h1 class="guide_h1">Slide</h1>
+	<p class="guide_p"></p>
 
-<h1 class="guide_h1">Slide</h1>
-<p class="guide_p"></p>
 
+	<h2 class="guide_h2">Test</h2>
+	<div class="guide_test">
 
-<h2 class="guide_h2">Test</h2>
-<div class="guide_test">
-
-	<div class="slider">
-		<div>I am a slide.</div>
-		<div>I am another slide.</div>
+		<div class="slider">
+			<div>I am a slide.</div>
+			<div>I am another slide.</div>
+		</div>
+		<script>
+			$('.slider').bxSlider();
+		</script>
+		
 	</div>
-	<script>
-		$('.slider').bxSlider();
-	</script>
-	
 </div>
 
 </body>
