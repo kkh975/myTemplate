@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<link rel="stylesheet" type="text/css" href="base.css">
+	<link rel="stylesheet" type="text/css" href="default.css">
+	<link rel="stylesheet" type="text/css" href="guide.css">
+	<script src="https://code.jquery.com/jquery-1.12.4.min.js" integrity="sha256-ZosEbRLbNQzLpnKIkEdrPv7lOy9C27hHQ+Xp8a4MxAQ=" crossorigin="anonymous"></script>
+</head>
+<body>
+
+
+<h3>설명문</h3>
+<a href="#descript1" id="descript_link1" class="descript_link">설명문</a>
+<div id="descript1" class="descript_body">
+	설명문1
+</div>
+<a href="#descript2" id="descript_link2" class="descript_link">설명문</a>
+<div id="descript2" class="descript_body">
+	설명문2
+</div>
+<a href="#descript3" id="descript_link3" class="descript_link">설명문</a>
+<div id="descript3" class="descript_body">
+	설명문3
+</div>
+
+
+<script type="text/javascript">
+	$.fn.myDescript = function( _option ){
+		return this.each( function(){
+			var $this = $( this )
+			var $target = $( $this.attr('href') )
+			var isOn = false;
+			var events;
+			var option = $.extend({
+				activeEvent: 'click'
+			}, _option)
+			
+			// $target 없으면 종료
+			if ( $target.length == 0 ) {
+				console.warn('No target!')
+				return
+			}
+
+			if (typeof(option.activeEvent) == 'string') {
+				events = option.activeEvent.split(',')
+			} else {
+				events = option.activeEvent
+			}
+
+			for (var i = events.length-1; i >= 0; i--) {
+				$this.on(events[i], function( e ){
+					if (e.type == 'click') {
+						e.preventDefault()
+					}
+
+					$target.toggle()
+
+					// 액션 종료 후 콜백
+					if (typeof(option.eventCallback) == 'function') {
+						option.eventCallback( e )
+					}
+				})
+			}
+
+			// 설치 후 콜백
+			if (typeof(option.installCallback) == 'function') {
+				option.installCallback()
+			}
+		})
+	}
+
+	$('#descript_link1').myDescript({
+		activeEvent: 'click',
+		installCallback: function() {
+			console.log( 'test' )
+		},
+		eventCallback: function( e ) {
+			console.log( 'test' )
+		}
+	})
+	$('#descript_link2').myDescript({
+		activeEvent: ['mouseover', 'click', 'focus']
+	})
+	$('#descript_link3').myDescript({
+		activeEvent: 'mouseover, click, focus'
+	})
+</script>
+
+</body>
+</html>
