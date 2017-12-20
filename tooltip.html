@@ -1,38 +1,31 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="ko">
 <head>
 	<meta charset="UTF-8">
-	<title>Document</title>
-	<link rel="stylesheet" type="text/css" href="base.css">
-	<link rel="stylesheet" type="text/css" href="default.css">
-	<link rel="stylesheet" type="text/css" href="guide.css">
+	<title>Tooltip | myComponent</title>
+	<link rel="stylesheet" type="text/css" href="style/base.css">
+	<link rel="stylesheet" type="text/css" href="style/guide.css">
+	<link rel="stylesheet" type="text/css" href="style/default_layout.css">
+	<link rel="stylesheet" type="text/css" href="style/default_component.css">
 	<script src="https://code.jquery.com/jquery-1.12.4.min.js" integrity="sha256-ZosEbRLbNQzLpnKIkEdrPv7lOy9C27hHQ+Xp8a4MxAQ=" crossorigin="anonymous"></script>
 </head>
 <body>
 
-
-<h3>설명문</h3>
-<a href="#descript1" id="descript_link1" class="descript_link">설명문</a>
-<div id="descript1" class="descript_body">
-	설명문1
-</div>
-<a href="#descript2" id="descript_link2" class="descript_link">설명문</a>
-<div id="descript2" class="descript_body">
-	설명문2
-</div>
-<a href="#descript3" id="descript_link3" class="descript_link">설명문</a>
-<div id="descript3" class="descript_body">
-	설명문3
-</div>
+<h1 class="guide_h1">Tooltip</h1>
+<p class="guide_p"></p>
 
 
 <script type="text/javascript">
-	$.fn.myDescript = function( _option ){
+	/*
+	 * option
+	 */
+	$.fn.myTooltip = function( _option ){
 		return this.each( function(){
 			var $this = $( this )
 			var $target = $( $this.attr('href') )
 			var isOn = false;
 			var events;
+			
 			var option = $.extend({
 				activeEvent: 'click'
 			}, _option)
@@ -70,8 +63,39 @@
 			}
 		})
 	}
+</script>
 
-	$('#descript_link1').myDescript({
+
+<h2 class="guide_h2">Option</h2>
+<div class="guide_option">
+</div>
+
+
+<h2 class="guide_h2">Use</h2>
+<div class="guide_option">
+</div>
+
+
+<h2 class="guide_h2">Test</h2>
+<div class="guide_test">
+
+	<a href="#tooltip1" id="tooltip_link1" class="tooltip_link">설명문</a>
+	<div id="tooltip1" class="tooltip_body">
+		설명문1
+	</div>
+	<a href="#tooltip2" id="tooltip_link2" class="tooltip_link">설명문</a>
+	<div id="tooltip2" class="tooltip_body">
+		설명문2
+	</div>
+	<a href="#tooltip3" id="tooltip_link3" class="tooltip_link">설명문</a>
+	<div id="tooltip3" class="tooltip_body">
+		설명문3
+	</div>
+
+</div>
+
+<script type="text/javascript">
+	$('#tooltip_link1').myTooltip({
 		activeEvent: 'click',
 		installCallback: function() {
 			console.log( 'test' )
@@ -80,10 +104,10 @@
 			console.log( 'test' )
 		}
 	})
-	$('#descript_link2').myDescript({
+	$('#tooltip_link2').myTooltip({
 		activeEvent: ['mouseover', 'click', 'focus']
 	})
-	$('#descript_link3').myDescript({
+	$('#tooltip_link3').myTooltip({
 		activeEvent: 'mouseover, click, focus'
 	})
 </script>

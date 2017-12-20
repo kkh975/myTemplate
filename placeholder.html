@@ -1,19 +1,20 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="ko">
 <head>
 	<meta charset="UTF-8">
-	<title>Document</title>
-	<link rel="stylesheet" type="text/css" href="base.css">
-	<link rel="stylesheet" type="text/css" href="default.css">
-	<link rel="stylesheet" type="text/css" href="guide.css">
+	<title>Placeholder | myComponent</title>
+	<link rel="stylesheet" type="text/css" href="style/base.css">
+	<link rel="stylesheet" type="text/css" href="style/guide.css">
+	<link rel="stylesheet" type="text/css" href="style/default_layout.css">
+	<link rel="stylesheet" type="text/css" href="style/default_component.css">
 	<script src="https://code.jquery.com/jquery-1.12.4.min.js" integrity="sha256-ZosEbRLbNQzLpnKIkEdrPv7lOy9C27hHQ+Xp8a4MxAQ=" crossorigin="anonymous"></script>
 </head>
 <body>
 
+<h1 class="guide_h1">Placeholder</h1>
+<p class="guide_p"></p>
 
 
-<h3>플레이스 홀더</h3>
-<input type="text" name="" class="myPlaceholder">
 <script type="text/javascript">
 	$.fn.myPlaceholder = function( _option ){
 		return this.each( function(){
@@ -21,6 +22,7 @@
 			var $target = $( $this.attr('href') )
 			var isOn = false;
 			var events;
+
 			var option = $.extend({
 				activeEvent: 'click'
 			}, _option)
@@ -58,9 +60,28 @@
 			}
 		})
 	}
+</script>
 
+
+<h2 class="guide_h2">Option</h2>
+<div class="guide_option">
+</div>
+
+
+<h2 class="guide_h2">Use</h2>
+<div class="guide_option">
+</div>
+
+
+<h2 class="guide_h2">Test</h2>
+<div class="guide_test">
+
+	<input type="text" name="" class="myPlaceholder">
+
+</div>
+
+<script type="text/javascript">
 	$('.myPlaceholder').myPlaceholder({
-		activeEvent: 'click',
 		installCallback: function() {
 			console.log( 'test' )
 		},

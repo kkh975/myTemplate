@@ -1,36 +1,28 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="ko">
 <head>
 	<meta charset="UTF-8">
-	<title>Document</title>
-	<link rel="stylesheet" type="text/css" href="base.css">
-	<link rel="stylesheet" type="text/css" href="default.css">
-	<link rel="stylesheet" type="text/css" href="guide.css">
+	<title>Tab | myComponent</title>
+	<link rel="stylesheet" type="text/css" href="style/base.css">
+	<link rel="stylesheet" type="text/css" href="style/guide.css">
+	<link rel="stylesheet" type="text/css" href="style/default_layout.css">
+	<link rel="stylesheet" type="text/css" href="style/default_component.css">
 	<script src="https://code.jquery.com/jquery-1.12.4.min.js" integrity="sha256-ZosEbRLbNQzLpnKIkEdrPv7lOy9C27hHQ+Xp8a4MxAQ=" crossorigin="anonymous"></script>
 </head>
 <body>
 
+<h1 class="guide_h1">Tab</h1>
+<p class="guide_p"></p>
 
-<h2>탭</h2>
-<div class="tab_links">
-	<ul class="col col-3">
-		<li><a href="">탭1</a></li>
-		<li><a href="">탭2</a></li>
-		<li><a href="">탭3</a></li>
-	</ul>
-</div>
-<div class="tab_contents">
-	<div id="tab_content1"></div>
-	<div id="tab_content2"></div>
-	<div id="tab_content3"></div>
-</div>
+
 <script type="text/javascript">
-	$.fn.myDescript = function( _option ){
+	$.fn.myTab = function( _option ){
 		return this.each( function(){
 			var $this = $( this )
 			var $target = $( $this.attr('href') )
 			var isOn = false;
 			var events;
+
 			var option = $.extend({
 				activeEvent: 'click'
 			}, _option)
@@ -68,8 +60,39 @@
 			}
 		})
 	}
+</script>
 
-	$('#descript_link1').myDescript({
+
+<h2 class="guide_h2">Option</h2>
+<div class="guide_option">
+</div>
+
+
+<h2 class="guide_h2">Use</h2>
+<div class="guide_option">
+</div>
+
+
+<h2 class="guide_h2">Test</h2>
+<div class="guide_test">
+
+	<div class="tab_links">
+		<ul class="col col-3">
+			<li><a href="">탭1</a></li>
+			<li><a href="">탭2</a></li>
+			<li><a href="">탭3</a></li>
+		</ul>
+	</div>
+	<div class="tab_contents">
+		<div id="tab_content1"></div>
+		<div id="tab_content2"></div>
+		<div id="tab_content3"></div>
+	</div>
+
+</div>
+
+<script type="text/javascript">
+	$('#tooltip_link1').myTab({
 		activeEvent: 'click',
 		installCallback: function() {
 			console.log( 'test' )
@@ -77,12 +100,6 @@
 		eventCallback: function( e ) {
 			console.log( 'test' )
 		}
-	})
-	$('#descript_link2').myDescript({
-		activeEvent: ['mouseover', 'click', 'focus']
-	})
-	$('#descript_link3').myDescript({
-		activeEvent: 'mouseover, click, focus'
 	})
 </script>
 

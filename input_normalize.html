@@ -1,26 +1,28 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="ko">
 <head>
 	<meta charset="UTF-8">
-	<title>Document</title>
-	<link rel="stylesheet" type="text/css" href="base.css">
-	<link rel="stylesheet" type="text/css" href="default.css">
-	<link rel="stylesheet" type="text/css" href="guide.css">
+	<title>Input Normalize | myComponent</title>
+	<link rel="stylesheet" type="text/css" href="style/base.css">
+	<link rel="stylesheet" type="text/css" href="style/guide.css">
+	<link rel="stylesheet" type="text/css" href="style/default_layout.css">
+	<link rel="stylesheet" type="text/css" href="style/default_component.css">
 	<script src="https://code.jquery.com/jquery-1.12.4.min.js" integrity="sha256-ZosEbRLbNQzLpnKIkEdrPv7lOy9C27hHQ+Xp8a4MxAQ=" crossorigin="anonymous"></script>
 </head>
 <body>
 
+<h1 class="guide_h1">Input Normalize</h1>
+<p class="guide_p">IE에서 input의 x버튼과 placeholder 기능 맞추기</p>
 
 
-<h3>input Normalize(IE에서 input의 x버튼과 placeholder 기능 맞추기)</h3>
-<input type="text" name="" class="myPlaceholder">
 <script type="text/javascript">
-	$.fn.myPlaceholder = function( _option ){
+	$.fn.inputNormalize = function( _option ){
 		return this.each( function(){
 			var $this = $( this )
 			var $target = $( $this.attr('href') )
 			var isOn = false;
 			var events;
+
 			var option = $.extend({
 				activeEvent: 'click'
 			}, _option)
@@ -58,9 +60,28 @@
 			}
 		})
 	}
+</script>
 
-	$('.myPlaceholder').myPlaceholder({
-		activeEvent: 'click',
+
+<h2 class="guide_h2">Option</h2>
+<div class="guide_option">
+</div>
+
+
+<h2 class="guide_h2">Use</h2>
+<div class="guide_option">
+</div>
+
+
+<h2 class="guide_h2">Test</h2>
+<div class="guide_test">
+
+	<input type="text" name="" class="input_normalize">
+
+</div>
+
+<script type="text/javascript">
+	$('#tooltip_link1').inputNormalize({
 		installCallback: function() {
 			console.log( 'test' )
 		},

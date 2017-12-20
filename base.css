@@ -1,6 +1,0 @@
-@charset 'utf-8';
-
-* { margin:0; padding:0; }
-html, body { font-size:12px; line-height:1em; }
-a { text-decoration:none; }
-a, button { cursor:pointer; font-size:inherit; font-family:inherit; color:inherit; line-height:1em; }
