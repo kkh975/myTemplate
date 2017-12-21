@@ -20,14 +20,15 @@
 
 
 	<script type="text/javascript">
-		$.fn.myPlaceholder = function( _option ){
+		(function ( $ ) {
 			var isSupportBrower = (function(){
 				var test = document.createElement('input');
 				return 'placeholder' in test
 			})()
 
-			return this.each( function(){
-				var $this = $( this ),
+			function myPlaceholder( element, _option ){
+				var that = this,
+					$this = $( element ),
 					initTxt = $this.attr('placeholder')
 
 				var option = $.extend({
@@ -56,79 +57,247 @@
 					}
 				}
 
-				$this
-					.on('focus', function(e){
-						if ($this.val() == initTxt) {
-							$this.val('');
-						}
+				function enable() {
+					$this
+						.on('focus.myPlaceholder', function(e){
+							if ($this.val() == initTxt) {
+								$this.val('');
+							}
 
-						$this.removeClass( option.activeClass )
-					})
-					.on('blur', function(e){
-						activeCheck()
+							$this.removeClass( option.activeClass )
+						})
+						.on('blur.myPlaceholder', function(e){
+							activeCheck()
 
-						// 설치 후 콜백
-						if (typeof(option.activeCallback) == 'function') {
-							option.activeCallback()
-						}
-					});
+							// 설치 후 콜백
+							if (typeof(option.activeCallback) == 'function') {
+								option.activeCallback()
+							}
+						})
+
+					activeCheck()
+				}
+
+				function disable() {
+					$this.off('focus.myPlaceholder')
+					$this.off('blur.myPlaceholder')
+				}
+
+				function destroy() {
+					$.removeData($this.get(0));
+					$this.off('focus.myPlaceholder')
+					$this.off('blur.myPlaceholder')
+					$this.removeClass( option.activeClass )
+				}
 
 				// 초기화
+				enable()
 				$this.attr('placeholder', '');
-				activeCheck()
 
 				// 설치 후 콜백
 				if (typeof(option.installCallback) == 'function') {
 					option.installCallback()
 				}
-			})
-		}
+
+				return {
+					enable: enable,
+					disable: disable,
+					destroy: destroy
+				}
+			}
+
+			$.fn.myPlaceholder = function( _option ){
+				return this.each( function(){
+					if ( typeof(_option) == 'string' && $.data( this, "myPlaceholder" ) ){
+						if ( _option == 'enable' ){
+							$.data( this, "myPlaceholder").enable();
+						} else if ( _option == 'disable' ){
+							$.data( this, "myPlaceholder").disable();
+						} else if ( _option == 'destroy' ){
+							$.data( this, "myPlaceholder").destroy();
+						}
+					} else if ( !$.data( this, "myPlaceholder" ) ){
+						$.data( this, "myPlaceholder", new myPlaceholder( this, _option ) );
+					}
+				})
+			}
+		})( jQuery, window, document );
 	</script>
 
 
 	<h2 class="guide_h2">Option</h2>
-	<div class="guide_option">
+	<div class="guide_table">
+		<table>
+			<colgroup>
+				<col style="width:25%">
+				<col style="width:25%">
+				<col style="width:25%">
+				<col style="width:25%">
+			</colgroup>
+			<tbody>
+				<tr>
+					<th scope="row">isForce</th>
+					<td>Boolean</td>
+					<td>false</td>
+					<td>강제 모드 활성화 여부(지원 브라우저에서는 설치 안됨)</td>
+				</tr>
+				<tr>
+					<th scope="row">activeClass</th>
+					<td>String</td>
+					<td>myPlaceholder_active</td>
+					<td>활성시 class 이름</td>
+				</tr>
+				<tr>
+					<th scope="row">installCallback</th>
+					<td>Function</td>
+					<td></td>
+					<td>설치 후 callback</td>
+				</tr>
+				<tr>
+					<th scope="row">activeCallback</th>
+					<td>Function</td>
+					<td></td>
+					<td>설치 후 callback</td>
+				</tr>
+			</tbody>
+		</table>
+	</div>
+
+
+	<h2 class="guide_h2">Method</h2>
+	<div class="guide_table">
+		<table>
+			<colgroup>
+				<col style="width:50%">
+				<col style="width:50%">
+			</colgroup>
+			<tbody>
+				<tr>
+					<th scope="row">disable</th>
+					<td>비활성</td>
+				</tr>
+				<tr>
+					<th scope="row">enable</th>
+					<td>활성</td>
+				</tr>
+				<tr>
+					<th scope="row">destroy</th>
+					<td>제거</td>
+				</tr>
+			</tbody>
+		</table>
 	</div>
 
 
 	<h2 class="guide_h2">Use</h2>
 	<div class="guide_option">
+		<h3 class="guide_h3">기본</h3>
+		<pre>
+			$('.myPlaceholder').myPlaceholder();
+		</pre>
+		
+		<h3 class="guide_h3">옵션</h3>
+		<pre>
+			$('.myPlaceholder').myPlaceholder({
+				isForce: true,
+				activeClass: 'active',
+				installCallback: function() {
+					console.log( 'install' )
+				},
+				activeCallback: function() {
+					console.log( 'active' )	
+				}
+			});
+		</pre>
+
+		<h3 class="guide_h3">Method</h3>
+		<pre>
+			$('.myPlaceholder').myPlaceholder('disable')
+			$('.myPlaceholder').myPlaceholder('enable')
+			$('.myPlaceholder').myPlaceholder('destroy')
+		</pre>
 	</div>
 
 
 	<h2 class="guide_h2">Test</h2>
 	<div class="guide_test">
-
-		<input type="text" name="" class="myPlaceholder1" placeholder="test1">
-		<input type="text" name="" class="myPlaceholder2" placeholder="test2">
-		<input type="text" name="" value="hasName" class="myPlaceholder3" placeholder="test3">
+		<p>
+			<input type="text" name="" class="myPlaceholder1" placeholder="test1">
+		</p>
+		<p>
+			<input type="text" name="" class="myPlaceholder2" placeholder="test2">
+			<span class="myPlaceholder2_status">활성</span>
+			<button type="button" class="myPlaceholder2_disable">비활성</button>
+			<button type="button" class="myPlaceholder2_enable">활성</button>
+			<button type="button" class="myPlaceholder2_destroy">삭제</button>
+		</p>
+		<p>
+			<input type="text" name="" value="hasName" class="myPlaceholder3" placeholder="test3">
+			<span class="myPlaceholder3_status">활성</span>
+			<button type="button" class="myPlaceholder3_disable">비활성</button>
+			<button type="button" class="myPlaceholder3_enable">활성</button>
+		</p>
 
 	</div>
 
 	<script type="text/javascript">
 		$('.myPlaceholder1').myPlaceholder({
 			installCallback: function() {
-				console.log( 'install' )
+				console.log( 'install 1' )
 			}
 		})
+
 		$('.myPlaceholder2').myPlaceholder({
 			isForce: true,
 			installCallback: function() {
-				console.log( 'install' )
+				console.log( 'install 2' )
 			},
 			activeCallback: function() {
-				console.log( 'active' )	
+				console.log( 'active 2' )	
 			}
-		})
+		});
+
 		$('.myPlaceholder3').myPlaceholder({
 			isForce: true,
 			installCallback: function() {
-				console.log( 'install' )
+				console.log( 'install 3' )
 			},
 			activeCallback: function() {
-				console.log( 'active' )	
+				console.log( 'active 3' )	
 			}
-		})
+		});
+
+		$('.myPlaceholder2').on('focus', function(){ console.log('solo focus') })
+		$('.myPlaceholder2').on('blur', function(){ console.log('solo blur') })
+
+		$('.myPlaceholder2_disable').on('click', function(){
+			$('.myPlaceholder2').myPlaceholder('disable')
+			$('.myPlaceholder2_status').text('비활성')
+		});
+
+		$('.myPlaceholder2_enable').on('click', function(){
+			$('.myPlaceholder2').myPlaceholder('enable')
+			$('.myPlaceholder2_status').text('활성')
+		});
+
+		$('.myPlaceholder2_destroy').on('click', function(){
+			$('.myPlaceholder2').myPlaceholder('destroy')
+			$('.myPlaceholder2_status').text('제거')
+		});
+
+		$('.myPlaceholder3_disable').on('click', function(){
+			$('.myPlaceholder3').myPlaceholder('disable')
+			$('.myPlaceholder3_status').text('비활성')
+		});
+
+		$('.myPlaceholder3_enable').on('click', function(){
+			$('.myPlaceholder3').myPlaceholder('enable')
+			$('.myPlaceholder3_status').text('활성')
+		});
+
+		// setTimeout(function(){
+		// 	$('.myPlaceholder3').myPlaceholder('destroy')
+		// }, 5000)
 	</script>
 </div>
 
