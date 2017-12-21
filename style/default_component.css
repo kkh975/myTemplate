@@ -124,7 +124,7 @@
 /*
  * 기본
  */
-.icon { display:inline-block; text-align:left; text-indent:-9999%; }
+.icon { display:inline-block; text-align:left; text-indent:-9999%; overflow:hidden; }
 
 
 /*

@@ -21,42 +21,61 @@
 
 	<script type="text/javascript">
 		$.fn.myPlaceholder = function( _option ){
+			var isSupportBrower = (function(){
+				var test = document.createElement('input');
+				return 'placeholder' in test
+			})()
+
 			return this.each( function(){
-				var $this = $( this )
-				var $target = $( $this.attr('href') )
-				var isOn = false;
-				var events;
+				var $this = $( this ),
+					initTxt = $this.attr('placeholder')
 
 				var option = $.extend({
-					activeEvent: 'click'
+					isForce: false,
+					activeClass: 'myPlaceholder_active',
+					installCallback: null,
+					activeCallback: null
 				}, _option)
-				
-				// $target 없으면 종료
-				if ( $target.length == 0 ) {
-					console.warn('No target!')
+
+				// 강제 설정이 아닌경우, 브라우저 체크 후 패스
+				if (!option.isForce && isSupportBrower) {
 					return
 				}
 
-				if (typeof(option.activeEvent) == 'string') {
-					events = option.activeEvent.split(',')
-				} else {
-					events = option.activeEvent
+				function activeCheck() {
+					if ($this.val().length == 0) {
+						$this.val( initTxt )
+						$this.addClass( option.activeClass )
+					} else {
+						$this.removeClass( option.activeClass )
+					}
+
+					// 설치 후 콜백
+					if (typeof(option.activeCallback) == 'function') {
+						option.activeCallback()
+					}
 				}
 
-				for (var i = events.length-1; i >= 0; i--) {
-					$this.on(events[i], function( e ){
-						if (e.type == 'click') {
-							e.preventDefault()
+				$this
+					.on('focus', function(e){
+						if ($this.val() == initTxt) {
+							$this.val('');
 						}
 
-						$target.toggle()
-
-						// 액션 종료 후 콜백
-						if (typeof(option.eventCallback) == 'function') {
-							option.eventCallback( e )
-						}
+						$this.removeClass( option.activeClass )
 					})
-				}
+					.on('blur', function(e){
+						activeCheck()
+
+						// 설치 후 콜백
+						if (typeof(option.activeCallback) == 'function') {
+							option.activeCallback()
+						}
+					});
+
+				// 초기화
+				$this.attr('placeholder', '');
+				activeCheck()
 
 				// 설치 후 콜백
 				if (typeof(option.installCallback) == 'function') {
@@ -80,17 +99,34 @@
 	<h2 class="guide_h2">Test</h2>
 	<div class="guide_test">
 
-		<input type="text" name="" class="myPlaceholder">
+		<input type="text" name="" class="myPlaceholder1" placeholder="test1">
+		<input type="text" name="" class="myPlaceholder2" placeholder="test2">
+		<input type="text" name="" value="hasName" class="myPlaceholder3" placeholder="test3">
 
 	</div>
 
 	<script type="text/javascript">
-		$('.myPlaceholder').myPlaceholder({
+		$('.myPlaceholder1').myPlaceholder({
 			installCallback: function() {
-				console.log( 'test' )
+				console.log( 'install' )
+			}
+		})
+		$('.myPlaceholder2').myPlaceholder({
+			isForce: true,
+			installCallback: function() {
+				console.log( 'install' )
 			},
-			eventCallback: function( e ) {
-				console.log( 'test' )
+			activeCallback: function() {
+				console.log( 'active' )	
+			}
+		})
+		$('.myPlaceholder3').myPlaceholder({
+			isForce: true,
+			installCallback: function() {
+				console.log( 'install' )
+			},
+			activeCallback: function() {
+				console.log( 'active' )	
 			}
 		})
 	</script>
