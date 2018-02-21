@@ -3,6 +3,7 @@
 <head>
 	<meta charset="UTF-8">
 	<title>Quick(Spy) | myComponent</title>
+	<meta name="viewport" content="width=device-width, initial-scale=1,  user-scalable=0, minimum-scale=1.0, maximum-scale=1.0">
 	<link rel="stylesheet" type="text/css" href="style/base.css">
 	<link rel="stylesheet" type="text/css" href="style/default_layout.css">
 	<link rel="stylesheet" type="text/css" href="style/default_component.css">
@@ -16,14 +17,128 @@
 	
 <div>
 	<div id="container">
-	    <div id="header"><div>header</div></div>
-	    <div id="content"><div>content</div></div>
-	    <div id="quick"></div>
-	    <div id="footer"><div>footer</div></div>
+	    <div id="header" style="height:200px; background:red; opacity:0.4; text-align:center;"><div>header</div></div>
+	    <div id="content" style="margin:0 auto; width: 900px; min-height:1200px; background:green; opacity:0.4; text-align:center;"><div>content</div></div>
+
+	    <div id="quick" style="width: 50px; height:250px; background:purple; opacity:0.4; text-align:center;"></div>
+	    <div id="quick2"></div>
+	    
+	    <div id="footer" style="height:200px; background:blue; opacity:0.4; text-align:center;"><div>footer</div></div>
 	</div>
 </div>
 
 <script type="text/javascript">
+	(function ( $ ) {
+		function mySpyScroll( element, _option ){
+			var $win = $( window ),
+				$this = $( element ),
+				resizeOnceCheck, thisHei, rangeOffset, rangeTop, rangeBottom;
+
+			var option = $.extend({
+				$range: $win,
+				resize: resize,
+				isCssInline: true,
+				installCallback: null
+			}, _option)
+
+			function draw() {
+				setFigure();
+				scroll();
+			}
+
+			// 이벤트 설치
+			function enable() {
+				$win.on('resize.mySpyScroll', option.resize)
+				$win.on('scroll.mySpyScroll', scroll)
+			}
+
+			// 이벤트 제거
+			function disable() {
+				$win.off('resize.mySpyScroll')
+				$win.off('scroll.mySpyScroll')
+			}
+
+			// 관련 모두 제거
+			function destroy() {
+				$.removeData($this.get(0));
+				disable()
+			}
+
+			function resize( e ) {
+				clearTimeout(resizeOnceCheck)
+				resizeOnceCheck = setTimeout(draw, 500)
+			}
+
+			function setFigure() {
+				thisHei = $this.height()
+				rangeOffset = option.$range.offset()
+				rangeTop = rangeOffset.top;
+				rangeBottom = rangeOffset.top + option.$range.height();
+			}
+
+			function scroll() {
+				var scroll = $win.scrollTop()
+
+				if (scroll > rangeTop && scroll+thisHei < rangeBottom) {
+					$this.css('top', scroll)
+				} else if (scroll <= rangeTop) {
+					$this.css('top', rangeTop)
+				}
+			}
+
+			// 시작
+			draw();
+			enable();
+
+			if (option.isCssInline) {
+				$this.css('position', 'absolute');
+				$this.css('top', rangeTop);
+			};
+
+			// 설치 후 콜백
+			if (typeof(option.installCallback) == 'function') {
+				option.installCallback()
+			}
+
+			return {
+				draw: draw,
+				enable: enable,
+				disable: disable,
+				destroy: destroy
+			}
+		}
+
+		$.fn.mySpyScroll = function( _option ){
+			return this.each( function(){
+				if ( typeof(_option) == 'string' && $.data( this, "mySpyScroll" ) ){
+					switch( _option ){
+						case 'enable':
+							$.data( this, "mySpyScroll").enable();
+							break;
+						case 'disable':
+							$.data( this, "mySpyScroll").disable();
+							break;
+						case 'destroy':
+							$.data( this, "mySpyScroll").destroy();
+							break;
+					}
+				} else if ( !$.data( this, "mySpyScroll" ) ){
+					$.data( this, "mySpyScroll", new mySpyScroll( this, _option ) );
+				}
+			})
+		}
+	})( jQuery, window, document );
+
+	$(document).ready( function(){
+		$('#quick').mySpyScroll({
+			isCssInline: true,
+			$range: $('#content')
+		});
+		$('#quick').mySpyScroll({
+			isCssInline: false,
+			$range: $('#content')
+		});
+	});
 </script>
 
 </body>

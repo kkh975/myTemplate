@@ -3,109 +3,157 @@
 <head>
 	<meta charset="UTF-8">
 	<title>Modal | myComponent</title>
+	<meta name="viewport" content="width=device-width, initial-scale=1,  user-scalable=0, minimum-scale=1.0, maximum-scale=1.0">
 	<link rel="stylesheet" type="text/css" href="style/base.css">
 	<link rel="stylesheet" type="text/css" href="style/default_layout.css">
 	<link rel="stylesheet" type="text/css" href="style/default_component.css">
 	<script src="https://code.jquery.com/jquery-1.12.4.min.js" integrity="sha256-ZosEbRLbNQzLpnKIkEdrPv7lOy9C27hHQ+Xp8a4MxAQ=" crossorigin="anonymous"></script>
+	<script type="text/javascript" src="script/modal.js"></script>
 
 	<!-- guide -->
 	<link rel="stylesheet" type="text/css" href="guide/style.css">
 	<script src="guide/script.js"></script>
 </head>
 <body>
-	
+
 <div class="guide_wrap">
 	<h1 class="guide_h1">Modal</h1>
 	<p class="guide_p"></p>
 
 
 	<script type="text/javascript">
-		$.fn.myModal = function( _option ){
-			return this.each( function(){
-				var $this = $( this )
-				var $target = $( $this.attr('href') )
-				var isOn = false;
-				var events;
-				
-				var option = $.extend({
-					activeEvent: 'click'
-				}, _option)
-				
-				// $target 없으면 종료
-				if ( $target.length == 0 ) {
-					console.warn('No target!')
-					return
-				}
-
-				if (typeof(option.activeEvent) == 'string') {
-					events = option.activeEvent.split(',')
-				} else {
-					events = option.activeEvent
-				}
-
-				for (var i = events.length-1; i >= 0; i--) {
-					$this.on(events[i], function( e ){
-						if (e.type == 'click') {
-							e.preventDefault()
-						}
-
-						$target.toggle()
-
-						// 액션 종료 후 콜백
-						if (typeof(option.eventCallback) == 'function') {
-							option.eventCallback( e )
-						}
-					})
-				}
-
-				// 설치 후 콜백
-				if (typeof(option.installCallback) == 'function') {
-					option.installCallback()
-				}
-			})
-		}
 	</script>
 
 
 	<h2 class="guide_h2">Option</h2>
-	<div class="guide_option">
+	<div class="guide_table">
+		<table>
+			<colgroup>
+				<col style="width:25%">
+				<col style="width:25%">
+				<col style="width:25%">
+				<col style="width:25%">
+			</colgroup>
+			<tbody>
+				<tr>
+					<th scope="row">isForce</th>
+					<td>Boolean</td>
+					<td>false</td>
+					<td>강제 모드 활성화 여부(지원 브라우저에서는 설치 안됨)</td>
+				</tr>
+				<tr>
+					<th scope="row">activeClassName</th>
+					<td>String</td>
+					<td>my_modal_active</td>
+					<td>활성시 class 이름</td>
+				</tr>
+				<tr>
+					<th scope="row">installCallback</th>
+					<td>Function</td>
+					<td></td>
+					<td>설치 후 callback</td>
+				</tr>
+				<tr>
+					<th scope="row">openCallback</th>
+					<td>Function</td>
+					<td></td>
+					<td>설치 후 callback</td>
+				</tr>
+			</tbody>
+		</table>
+	</div>
+
+
+	<h2 class="guide_h2">Method</h2>
+	<div class="guide_table">
+		<table>
+			<colgroup>
+				<col style="width:50%">
+				<col style="width:50%">
+			</colgroup>
+			<tbody>
+				<tr>
+					<th scope="row">disable</th>
+					<td>비활성</td>
+				</tr>
+				<tr>
+					<th scope="row">enable</th>
+					<td>활성</td>
+				</tr>
+				<tr>
+					<th scope="row">destroy</th>
+					<td>제거</td>
+				</tr>
+			</tbody>
+		</table>
 	</div>
 
 
 	<h2 class="guide_h2">Use</h2>
 	<div class="guide_option">
+		<h3 class="guide_h3">기본</h3>
+		<pre>
+			$('.myModal').myModal();
+		</pre>
+		
+		<h3 class="guide_h3">옵션</h3>
+		<pre>
+			$('.myModal').myModal({
+				isForce: true,
+				activeClassName: 'active',
+				installCallback: function() {
+					console.log( 'install' )
+				},
+				openCallback: function() {
+					console.log( 'active' )	
+				}
+			});
+		</pre>
+
+		<h3 class="guide_h3">Method</h3>
+		<pre>
+			$('.myModal').myModal('disable')
+			$('.myModal').myModal('enable')
+			$('.myModal').myModal('destroy')
+		</pre>
 	</div>
 
 
 	<h2 class="guide_h2">Test</h2>
 	<div class="guide_test">
-
-		<a href="#modal" class="modal_link">팝업</a>
-		<div id="modal" class="modal_body">
-			<div class="modal_bg"></div><!-- 뒷 배경 존재시, 클릭 하면 닫기 -->
-			<div class="modal_content">
-				내용	
+		<p>
+			<a href="#myModal1" class="myModal1">열기</a>
+			<button class="button" class="myModalTimer">1.5초 후 강제열기</button>
+			<div id="myModal1" class="myModal">
+				<div class="my_modal_bg"></div>
+				<div class="my_modal_content">
+					<div class="my_modal_header">제목</div>
+					<div class="my_modal_body">
+						내용
+						<a href="">focus test</a>
+						<input type="text" name="" id="">
+					</div>
+					<div class="my_modal_footer">
+						<a href="">닫기</a>
+						<button type="button" class="my_modal_close">닫기</button>
+					</div>
+				</div>
 			</div>
-		</div>
-
+		</p>
 	</div>
 
 	<script type="text/javascript">
-		$('#tooltip_link1').myTooltip({
-			activeEvent: 'click',
+		$('.myModal1').myModal({
 			installCallback: function() {
-				console.log( 'test' )
-			},
-			eventCallback: function( e ) {
-				console.log( 'test' )
+				console.log( 'install 1' )
 			}
-		})
-		$('#tooltip_link2').myTooltip({
-			activeEvent: ['mouseover', 'click', 'focus']
-		})
-		$('#tooltip_link3').myTooltip({
-			activeEvent: 'mouseover, click, focus'
-		})
+		});
+
+		$('.myModalTimer').on('click', function(){
+			setTimeout( function(){
+				$('.myModal1').myModal('open');
+			}, 1500)
+		});
 	</script>
 </div>
 

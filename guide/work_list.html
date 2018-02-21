@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+	<meta charset="UTF-8">
+	<title>Work List | 서비스명</title>
+	<meta name="viewport" content="width=device-width, initial-scale=1,  user-scalable=0, minimum-scale=1.0, maximum-scale=1.0">
+	<script src="https://code.jquery.com/jquery-1.12.4.min.js" integrity="sha256-ZosEbRLbNQzLpnKIkEdrPv7lOy9C27hHQ+Xp8a4MxAQ=" crossorigin="anonymous"></script>
+	<link rel="stylesheet" type="text/css" href="resources/style.css">
+	<script type="text/javascript" src="resources/doing.js"></script>
+</head>
+<body>
+
+
+
+<div class="worklist_wrap">
+	<div class="worklist_top">
+		<h1><img src="resources/logo.png" alt="서비스명"></h1>
+		<select id="serviceLinks">
+			<option value="">바로가기</option>
+			<option value="http://www.naver.com">링크1</option>
+		</select>
+	</div>
+
+	<div class="worklist_form">
+		<div class="btns">	
+			<button id="listItemsToggle">목록 토글</button>
+		</div>
+		<div class="input">
+			<input type="text" name="" placeholder="검색어" title="검색어">
+		</div>
+	</div>
+
+	<div class="worklist_list">
+		<ul>
+			<li>
+				<button>가이드</button>
+				<ul>
+            		<li><a href=""></a></li>
+            		<li>
+            			<button>템플릿</button>
+            			<ul>
+							<li><a href="">메인 템플릿</a></li>
+							<li><a href="">서브 템플릿</a></li>
+            			</ul>
+            		</li>
+				</ul>
+			</li>
+			<li>
+				<button>메인</button>
+				<ul>
+            		<li><a href="">메인</a></li>
+				</ul>
+			</li>
+			<li>
+				<button>마이페이지</button>
+				<ul>
+            		<li><a href="">회원가입</a></li>
+            		<li><a href="">로그인</a></li>
+				</ul>
+			</li>
+		</ul>
+	</div>
+</div>
+	
+</body>
+</html>

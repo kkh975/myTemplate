@@ -20,6 +20,9 @@ a, button { cursor:pointer; font-size:inherit; font:inherit; color:inherit; }
 
 table { border-collapse: collapse; border-spacing: 0; }
 
+/* IE x button 제거 */
+input[type=text]::-ms-clear { display:none; }
+
 
 /* 
 TODO, 화면별 사이즈

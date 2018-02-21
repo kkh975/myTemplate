@@ -3,10 +3,12 @@
 <head>
 	<meta charset="UTF-8">
 	<title>Style | myComponent</title>
+	<meta name="viewport" content="width=device-width, initial-scale=1,  user-scalable=0, minimum-scale=1.0, maximum-scale=1.0">
 	<link rel="stylesheet" type="text/css" href="style/base.css">
 	<link rel="stylesheet" type="text/css" href="style/default_layout.css">
 	<link rel="stylesheet" type="text/css" href="style/default_component.css">
 	<script src="https://code.jquery.com/jquery-1.12.4.min.js" integrity="sha256-ZosEbRLbNQzLpnKIkEdrPv7lOy9C27hHQ+Xp8a4MxAQ=" crossorigin="anonymous"></script>
+	<script type="text/javascript" src="script/helper/style.js"></script>
 
 	<!-- guide -->
 	<link rel="stylesheet" type="text/css" href="guide/style.css">
@@ -15,80 +17,46 @@
 <body>
 
 <div class="guide_wrap">
-	<h1 class="guide_h1">Style</h1>
-	<p class="guide_p"></p>
+	<link rel="stylesheet" type="text/css" href="" title="test1">
+	<style type="text/css" class="test">
+		.sadari-play { position:absolute; top:18.6%; left:15.7%; width:68.5%; height:45.3%; background:url(../images/sadari_game_bgs1.png) no-repeat 0 0; background-size:cover; background-position: 0px 0%; }
+		.sadari-play[data-select="0"] { top:15px; background-position: 10px 19.9%; }
+		.sadari-play[data-select="1"] { top:25px; background-position: 20px 40%; }
+		.sadari-play[data-select="2"] { top:35px; background-position: 30px 60%; }
+		.sadari-play[data-select="3"] { top:45px; background-position: 40px 80%; }
+	</style>
+	<style type="text/css" class="test">
+		.sadari-play { position:absolute; top:18.6%; left:15.7%; width:68.5%; height:45.3%; background:url(../images/sadari_game_bgs1.png) no-repeat 0 0; background-size:cover; background-position: 0px 0%; }
+		.sadari-play[data-select="4"] { top:55px; background-position: 50px 100%; }
+		.sadari-play[data-select="5"] { top:65px; background-position: 60px 85.71428571428572%; }
+		.sadari-play[data-select="6"] { top:75px; background-position: 70px 100.0%; }
+	</style>
+	<style type="text/css">
+		.test { position:absolute; width:100px; height:100px; background:red; animation:testing 2s; }
+	</style>
 
-	<h2 class="guide_h2">버튼</h2>
-	<ul>
-		<li>- 컬러별: .btn_blue / .btn_red / .btn_green / .btn_lightgray / .btn_gray / .btn_darkgray</li>
-		<li>- 크기별: .btn_small / .btn_middle / .btn_large</li>
-		<li>- 형태별: .btn_outline / .btn_round / .btn_circle / .btn_block</li>
-	</ul>
-
-	<h3 class="guide_h3">Test</h3>
-	<div class="guide_test">
-		<a href="" class="btn">버튼 기본</a>
-		<button type="button" class="btn">버튼 기본</button>
-
-		<a href="" class="btn">버튼 기본</a>
-		<button type="button" class="btn">기본</button>
-
-		<a href="" class="btn btn_blue">파란</a>
-		<a href="" class="btn btn_blue" disabled>파란</a>
-		<button type="button" class="btn btn_blue">파란</button>
-		<button type="button" class="btn btn_blue" disabled>파란</button>
-
-		<a href="" class="btn btn_green">그린</a>
-		<a href="" class="btn btn_green" disabled>그린</a>
-		<button type="button" class="btn btn_green">그린</button>
-		<button type="button" class="btn btn_green" disabled>그린</button>
-
-		<a href="" class="btn btn_red">파란</a>
-		<a href="" class="btn btn_red" disabled>파란</a>
-		<button type="button" class="btn btn_red">빨간</button>
-		<button type="button" class="btn btn_red" disabled>빨간</button>
-
-		<a href="" class="btn btn_lightgray">회색1</a>
-		<a href="" class="btn btn_lightgray" disabled>회색1</a>
-		<button type="button" class="btn btn_lightgray">회색1</button>
-		<button type="button" class="btn btn_lightgray" disabled>회색1</button>
-
-		<a href="" class="btn btn_gray">회색2</a>
-		<a href="" class="btn btn_gray" disabled>회색2</a>
-		<button type="button" class="btn btn_gray">회색2</button>
-		<button type="button" class="btn btn_gray" disabled>회색2</button>
-
-		<a href="" class="btn btn_darkgray">회색3</a>
-		<a href="" class="btn btn_darkgray" disabled>회색3</a>
-		<button type="button" class="btn btn_darkgray">회색3</button>
-		<button type="button" class="btn btn_darkgray" disabled>회색3</button>
-
-
-		<button type="button" class="btn btn_small">작은</button>
-		<button type="button" class="btn btn_middle">중간(기본)</button>
-		<button type="button" class="btn btn_large">큰</button>
-
-
-		<button type="button" class="btn btn_outline">아웃라인</button>
-		<button type="button" class="btn btn_outline btn_blue">아웃라인</button>
-		<button type="button" class="btn btn_outline btn_green">아웃라인</button>
-		<button type="button" class="btn btn_outline btn_red">아웃라인</button>
-		<button type="button" class="btn btn_outline btn_lightgray">아웃라인</button>
-		<button type="button" class="btn btn_outline btn_gray">아웃라인</button>
-		<button type="button" class="btn btn_outline btn_darkgray">아웃라인</button>
-		<button type="button" class="btn btn_round">라운딩</button>
-		<button type="button" class="btn btn_circle">원</button>
-		<button type="button" class="btn btn_block">블록</button>
-	</div>
-
-	<h3 class="guide_h3">아이콘</h3>
-	<div class="guide_test">
-		<span class="icon">아이콘</span>
-	</div>
-
-	<h3 class="guide_h3">나누기</h3>
-	<div class="guide_test">
-	</div>
+		<div class="sadari-play" data-select="1"></div>
+		<div class="sadari-play" data-select="2"></div>
+		<div class="sadari-play" data-select="3"></div>
+		<div class="sadari-play" data-select="4"></div>
+		<div class="sadari-play" data-select="5"></div>
+		<div class="sadari-play" data-select="6"></div>
+		<div class="sadari-play" data-select="6"></div>
+		<div class="test"></div>
+	
+	<script type="text/javascript">
+		convertStylePxToRem(720/320, 12, $(".test"), ['.sadari-play[data-select="1"]', '.sadari-play[data-select="2"]']);
+		installCssAnimate('testing', {
+			'0%': {
+				top: 0,
+				left: 0
+			},
+			'100%' : {
+				top: '150px',
+				left: '150px'
+			}
+		})
+	</script>
 </div>
 	
 </body>

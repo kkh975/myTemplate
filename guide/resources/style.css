@@ -1,0 +1,64 @@
+@charset 'utf-8';
+
+* { margin:0; padding:0; }
+html, body { font-size:12px; line-height:1; color:#111; }
+
+article, aside, details, figcaption, figure, footer, header, hgroup, menu, nav, section { display:block; }
+
+fieldset { border:0px; }
+ol, ul { list-style:none; }
+
+blockquote, q { quotes: none; }
+blockquote:before, 
+blockquote:after, 
+q:before, 
+q:after { content: ''; content: none; }
+
+a { text-decoration:none; }
+a, button { cursor:pointer; font-size:inherit; font:inherit; color:inherit; }
+button { background:none; border:0px; }
+
+table { border-collapse: collapse; border-spacing: 0; }
+
+/* IE x button 제거 */
+input[type=text]::-ms-clear { display:none; }
+
+
+@media (max-width:360px){html{font-size:11px;}}
+@media (min-width:359px) and (max-width:439px){html{font-size:12px;}}
+@media (min-width:440px) and (max-width:579px){html{font-size:13px;}}
+@media (min-width:580px) {html{font-size:14px;}}
+
+html, body { max-width:1100px; margin:0 auto; }
+
+.worklist_top { position:relative; }
+.worklist_top h1 { padding:20px; }
+.worklist_top select { position:absolute; top:20px; right:20px; height:24px; line-height:24px; border-bottom:1px solid #eee; } 
+
+.worklist_form { margin:0 20px 15px; }
+.worklist_form .btns { float:right; margin-bottom:5px; }
+.worklist_form .input { clear:right; width:100%; height:34px; border:1px solid #ddd; }
+.worklist_form .input input { display:block; padding:0 10px; height:100%; line-height:34px; border:0px; }
+.worklist_form .input input:focus { outline:none; }
+
+.worklist_list a { display:block; padding:5px 15px; font-size:1rem; line-height:1em; }
+.worklist_list .script_txt { display:block; color:#999; padding-top:4px; padding-left:10px; font-size:0.8rem; }
+.worklist_list ul { display:none; }
+.worklist_list ul.on { display:block; }
+.worklist_list > ul { display:block; }
+.worklist_list > ul > li { border-bottom:1px solid #ccc; }
+.worklist_list > ul > li:first-child { border-top:1px solid #ccc; }
+.worklist_list > ul > li > button,
+.worklist_list > ul > li > strong { display:block; background:#eee; padding:10px 15px 14px; width:100%; text-align:left; font-weight:bold; font-size:1.3rem; }
+.worklist_list > ul > li > ul { padding:10px 15px; }
+.worklist_list > ul > li > ul > li > button,
+.worklist_list > ul > li > ul > li > strong { display:block; margin-top:10px; padding:2px 0 4px; width:100%; text-align:left; font-weight:bold; font-size:1.1rem; }
+.worklist_list > ul > li > ul > li > button::before,
+.worklist_list > ul > li > ul > li > strong::before { content:'+ '; }
+.worklist_list > ul > li > ul > li:first-child > button,
+.worklist_list > ul > li > ul > li:first-child > strong { margin-top:0px; }
+.worklist_list a:before { content:'- '; }
+
+@media (min-width:1100px) { 
+	.worklist_list > ul > li { border-left:1px solid #ccc; border-right:1px solid #ccc; }
+}

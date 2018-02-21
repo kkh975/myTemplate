@@ -1,0 +1,210 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+	<meta charset="UTF-8">
+	<title>Swipe Scroll | myComponent</title>
+	<meta name="viewport" content="width=device-width, initial-scale=1,  user-scalable=0, minimum-scale=1.0, maximum-scale=1.0">
+	<link rel="stylesheet" type="text/css" href="style/base.css">
+	<link rel="stylesheet" type="text/css" href="style/default_layout.css">
+	<link rel="stylesheet" type="text/css" href="style/default_component.css">
+	<script src="https://code.jquery.com/jquery-1.12.4.min.js" integrity="sha256-ZosEbRLbNQzLpnKIkEdrPv7lOy9C27hHQ+Xp8a4MxAQ=" crossorigin="anonymous"></script>
+	<script type="text/javascript" src="script/swipescroll.js"></script>
+
+	<!-- guide -->
+	<link rel="stylesheet" type="text/css" href="guide/style.css">
+	<script src="guide/script.js"></script>
+</head>
+<body>
+
+<div class="guide_wrap">
+	<h1 class="guide_h1">Swipe Scroll</h1>
+	<p class="guide_p"></p>
+
+
+	<script type="text/javascript">
+	</script>
+
+
+	<h2 class="guide_h2">Option</h2>
+	<div class="guide_table">
+		<table>
+			<colgroup>
+				<col style="width:25%">
+				<col style="width:25%">
+				<col style="width:25%">
+				<col style="width:25%">
+			</colgroup>
+			<tbody>
+				<tr>
+					<th scope="row">isSnap</th>
+					<td>Boolean</td>
+					<td>false</td>
+					<td>스냅 기능 활성화</td>
+				</tr>
+				<tr>
+					<th scope="row">isCssAllInline</th>
+					<td>Boolean</td>
+					<td>true</td>
+					<td>Recommend!! 내장 스타일 설치</td>
+				</tr>
+				<tr>
+					<th scope="row">initIndex</th>
+					<td>Number</td>
+					<td>0</td>
+					<td>초기화 위치</td>
+				</tr>
+				<tr>
+					<th scope="row">installCallback</th>
+					<td>Function</td>
+					<td></td>
+					<td>설치 후 callback</td>
+				</tr>
+				<tr>
+					<th scope="row">beforeCallback</th>
+					<td>Function</td>
+					<td></td>
+					<td>액션 전 callback</td>
+				</tr>
+				<tr>
+					<th scope="row">activeCallback</th>
+					<td>Function</td>
+					<td></td>
+					<td>액션 후 callback</td>
+				</tr>
+			</tbody>
+		</table>
+	</div>
+
+
+	<h2 class="guide_h2">Method</h2>
+	<div class="guide_table">
+		<table>
+			<colgroup>
+				<col style="width:50%">
+				<col style="width:50%">
+			</colgroup>
+			<tbody>
+				<tr>
+					<th scope="row">disable</th>
+					<td>비활성</td>
+				</tr>
+				<tr>
+					<th scope="row">enable</th>
+					<td>활성</td>
+				</tr>
+				<tr>
+					<th scope="row">destroy</th>
+					<td>제거</td>
+				</tr>
+			</tbody>
+		</table>
+	</div>
+
+
+	<h2 class="guide_h2">Use</h2>
+	<div class="guide_option">
+		<h3 class="guide_h3">기본</h3>
+		<pre>
+			$('.mySwipeScroll').mySwipeScroll();
+		</pre>
+		
+		<h3 class="guide_h3">옵션</h3>
+		<pre>
+			$('.mySwipeScroll').mySwipeScroll({
+				isForce: true,
+				activeClassName: 'active',
+				installCallback: function() {
+					console.log( 'install' )
+				},
+				openCallback: function() {
+					console.log( 'active' )	
+				}
+			});
+		</pre>
+
+		<h3 class="guide_h3">Method</h3>
+		<pre>
+			$('.mySwipeScroll').mySwipeScroll('disable')
+			$('.mySwipeScroll').mySwipeScroll('enable')
+			$('.mySwipeScroll').mySwipeScroll('destroy')
+		</pre>
+	</div>
+
+
+	<h2 class="guide_h2">Test</h2>
+	<div class="guide_test">
+		<button type="button" class="move">move</button>
+
+		<div class="myScrollSwipe">
+			<ul>
+				<li style="background:red;"><a href=""></a></li>
+				<li style="background:orange;"><a href=""></a></li>
+				<li style="background:yellow;"><a href=""></a></li>
+				<li style="background:green;"><a href=""></a></li>
+				<li style="background:blue;"><a href=""></a></li>
+				<li style="background:purple;"><a href=""></a></li>
+				<li style="background:black;"><a href=""></a></li>
+			</ul>
+		</div>
+
+		<br><br>
+
+		<div class="myScrollSwipe">
+			<ul>
+				<li style="background:red;"><a href=""></a></li>
+			</ul>
+		</div>
+
+		<br><br>
+
+		<div class="myScrollSwipe">
+			<ul>
+				<li style="background:red;"><a href=""></a></li>
+				<li style="background:orange;"><a href=""></a></li>
+			</ul>
+		</div>
+
+		<br><br>
+
+		<div class="myScrollSwipe">
+			<ul>
+				<li style="background:red;"><a href=""></a></li>
+				<li style="background:orange;"><a href=""></a></li>
+				<li style="background:yellow;"><a href=""></a></li>
+			</ul>
+		</div>
+		
+		<br><br>
+
+		<div class="myScrollSwipe">
+			<ul>
+				<li style="background:red;"><a href=""></a></li>
+				<li style="background:orange;"><a href=""></a></li>
+				<li style="background:yellow;"><a href=""></a></li>
+				<li style="background:green;"><a href=""></a></li>
+			</ul>
+		</div>
+
+		<style type="text/css">
+			.myScrollSwipe { width:90%; height:60px; margin:0 auto; }
+			.myScrollSwipe li { width:150px; height:60px; opacity:0.4; }
+			.myScrollSwipe a { display:block; }
+		</style>
+	</div>
+
+	<script type="text/javascript">
+		$('.myScrollSwipe').mySwipeScroll({
+			// initIndex: 2,
+			installCallback: function() {
+				console.log( 'install 1' )
+			}
+		});
+
+		$('.move').on('click', function(){
+			$('.myScrollSwipe').mySwipeScroll('move',3);
+		})
+	</script>
+</div>
+
+</body>
+</html>

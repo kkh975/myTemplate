@@ -7,6 +7,7 @@
 	<link rel="stylesheet" type="text/css" href="style/default_layout.css">
 	<link rel="stylesheet" type="text/css" href="style/default_component.css">
 	<script src="https://code.jquery.com/jquery-1.12.4.min.js" integrity="sha256-ZosEbRLbNQzLpnKIkEdrPv7lOy9C27hHQ+Xp8a4MxAQ=" crossorigin="anonymous"></script>
+	<script type="text/javascript" src="script/tooltip.js"></script>
 
 	<!-- guide -->
 	<link rel="stylesheet" type="text/css" href="guide/style.css">
@@ -19,101 +20,174 @@
 	<p class="guide_p"></p>
 
 
-	<script type="text/javascript">
-		/*
-		 * option
-		 */
-		$.fn.myTooltip = function( _option ){
-			return this.each( function(){
-				var $this = $( this )
-				var $target = $( $this.attr('href') )
-				var isOn = false;
-				var events;
-				
-				var option = $.extend({
-					activeEvent: 'click'
-				}, _option)
-				
-				// $target 없으면 종료
-				if ( $target.length == 0 ) {
-					console.warn('No target!')
-					return
-				}
-
-				if (typeof(option.activeEvent) == 'string') {
-					events = option.activeEvent.split(',')
-				} else {
-					events = option.activeEvent
-				}
-
-				for (var i = events.length-1; i >= 0; i--) {
-					$this.on(events[i], function( e ){
-						if (e.type == 'click') {
-							e.preventDefault()
-						}
-
-						$target.toggle()
-
-						// 액션 종료 후 콜백
-						if (typeof(option.eventCallback) == 'function') {
-							option.eventCallback( e )
-						}
-					})
-				}
-
-				// 설치 후 콜백
-				if (typeof(option.installCallback) == 'function') {
-					option.installCallback()
-				}
-			})
-		}
-	</script>
-
-
 	<h2 class="guide_h2">Option</h2>
-	<div class="guide_option">
+	<div class="guide_table">
+		<table>
+			<colgroup>
+				<col style="width:25%">
+				<col style="width:25%">
+				<col style="width:25%">
+				<col style="width:25%">
+			</colgroup>
+			<tbody>
+				<tr>
+					<th scope="row">isForce</th>
+					<td>Boolean</td>
+					<td>false</td>
+					<td>강제 모드 활성화 여부(지원 브라우저에서는 설치 안됨)</td>
+				</tr>
+				<tr>
+					<th scope="row">activeClassName</th>
+					<td>String</td>
+					<td>my_tooltip_active</td>
+					<td>활성시 class 이름</td>
+				</tr>
+				<tr>
+					<th scope="row">installCallback</th>
+					<td>Function</td>
+					<td></td>
+					<td>설치 후 callback</td>
+				</tr>
+				<tr>
+					<th scope="row">activeCallback</th>
+					<td>Function</td>
+					<td></td>
+					<td>설치 후 callback</td>
+				</tr>
+			</tbody>
+		</table>
+	</div>
+
+
+	<h2 class="guide_h2">Method</h2>
+	<div class="guide_table">
+		<table>
+			<colgroup>
+				<col style="width:50%">
+				<col style="width:50%">
+			</colgroup>
+			<tbody>
+				<tr>
+					<th scope="row">disable</th>
+					<td>비활성</td>
+				</tr>
+				<tr>
+					<th scope="row">enable</th>
+					<td>활성</td>
+				</tr>
+				<tr>
+					<th scope="row">destroy</th>
+					<td>제거</td>
+				</tr>
+			</tbody>
+		</table>
 	</div>
 
 
 	<h2 class="guide_h2">Use</h2>
 	<div class="guide_option">
+		<h3 class="guide_h3">기본</h3>
+		<pre>
+			$('.myTooltip').myTooltip();
+		</pre>
+		
+		<h3 class="guide_h3">옵션</h3>
+		<pre>
+			$('.myTooltip').myTooltip({
+				isForce: true,
+				activeClassName: 'active',
+				installCallback: function() {
+					console.log( 'install' )
+				},
+				activeCallback: function() {
+					console.log( 'active' )	
+				}
+			});
+		</pre>
+
+		<h3 class="guide_h3">Method</h3>
+		<pre>
+			$('.myTooltip').myTooltip('disable')
+			$('.myTooltip').myTooltip('enable')
+			$('.myTooltip').myTooltip('destroy')
+		</pre>
 	</div>
 
 
 	<h2 class="guide_h2">Test</h2>
 	<div class="guide_test">
-
-		<a href="#tooltip1" id="tooltip_link1" class="tooltip_link">설명문</a>
-		<div id="tooltip1" class="tooltip_body">
-			설명문1
-		</div>
-		<a href="#tooltip2" id="tooltip_link2" class="tooltip_link">설명문</a>
-		<div id="tooltip2" class="tooltip_body">
-			설명문2
-		</div>
-		<a href="#tooltip3" id="tooltip_link3" class="tooltip_link">설명문</a>
-		<div id="tooltip3" class="tooltip_body">
-			설명문3
-		</div>
-
+		<p>
+			<input type="text" name="" class="myTooltip1" placeholder="test1">
+		</p>
+		<p>
+			<input type="text" name="" class="myTooltip2" placeholder="test2">
+			<span class="myTooltip2_status">활성</span>
+			<button type="button" class="myTooltip2_disable">비활성</button>
+			<button type="button" class="myTooltip2_enable">활성</button>
+			<button type="button" class="myTooltip2_destroy">삭제</button>
+		</p>
+		<p>
+			<input type="text" name="" value="hasName" class="myTooltip3" placeholder="test3">
+			<span class="myTooltip3_status">활성</span>
+			<button type="button" class="myTooltip3_disable">비활성</button>
+			<button type="button" class="myTooltip3_enable">활성</button>
+		</p>
 	</div>
 
 	<script type="text/javascript">
-		$('#tooltip_link1').myTooltip({
-			activeEvent: 'click',
+		$('.myTooltip1').myTooltip({
 			installCallback: function() {
-				console.log( 'test' )
-			},
-			eventCallback: function( e ) {
-				console.log( 'test' )
+				console.log( 'install 1' )
 			}
 		})
-		$('#tooltip_link2').myTooltip({
-			activeEvent: ['mouseover', 'click', 'focus']
-		})
-		$('#tooltip_link3').myTooltip({
-			activeEvent: 'mouseover, click, focus'
-		})
+
+		$('.myTooltip2').myTooltip({
+			isForce: true,
+			installCallback: function() {
+				console.log( 'install 2' )
+			},
+			activeCallback: function() {
+				console.log( 'active 2' )	
+			}
+		});
+
+		$('.myTooltip3').myTooltip({
+			isForce: true,
+			installCallback: function() {
+				console.log( 'install 3' )
+			},
+			activeCallback: function() {
+				console.log( 'active 3' )	
+			}
+		});
+
+		$('.myTooltip2').on('focus', function(){ console.log('solo focus') })
+		$('.myTooltip2').on('blur', function(){ console.log('solo blur') })
+
+		$('.myTooltip2_disable').on('click', function(){
+			$('.myTooltip2').myTooltip('disable')
+			$('.myTooltip2_status').text('비활성')
+		});
+
+		$('.myTooltip2_enable').on('click', function(){
+			$('.myTooltip2').myTooltip('enable')
+			$('.myTooltip2_status').text('활성')
+		});
+
+		$('.myTooltip2_destroy').on('click', function(){
+			$('.myTooltip2').myTooltip('destroy')
+			$('.myTooltip2_status').text('제거')
+		});
+
+		$('.myTooltip3_disable').on('click', function(){
+			$('.myTooltip3').myTooltip('disable')
+			$('.myTooltip3_status').text('비활성')
+		});
+
+		$('.myTooltip3_enable').on('click', function(){
+			$('.myTooltip3').myTooltip('enable')
+			$('.myTooltip3_status').text('활성')
+		});
 	</script>
 </div>
 
