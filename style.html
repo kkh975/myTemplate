@@ -14,50 +14,353 @@
 	<link rel="stylesheet" type="text/css" href="guide/style.css">
 	<script src="guide/script.js"></script>
 </head>
+
 <body>
 
-<div class="guide_wrap">
-	<link rel="stylesheet" type="text/css" href="" title="test1">
-	<style type="text/css" class="test">
-		.sadari-play { position:absolute; top:18.6%; left:15.7%; width:68.5%; height:45.3%; background:url(../images/sadari_game_bgs1.png) no-repeat 0 0; background-size:cover; background-position: 0px 0%; }
-		.sadari-play[data-select="0"] { top:15px; background-position: 10px 19.9%; }
-		.sadari-play[data-select="1"] { top:25px; background-position: 20px 40%; }
-		.sadari-play[data-select="2"] { top:35px; background-position: 30px 60%; }
-		.sadari-play[data-select="3"] { top:45px; background-position: 40px 80%; }
-	</style>
-	<style type="text/css" class="test">
-		.sadari-play { position:absolute; top:18.6%; left:15.7%; width:68.5%; height:45.3%; background:url(../images/sadari_game_bgs1.png) no-repeat 0 0; background-size:cover; background-position: 0px 0%; }
-		.sadari-play[data-select="4"] { top:55px; background-position: 50px 100%; }
-		.sadari-play[data-select="5"] { top:65px; background-position: 60px 85.71428571428572%; }
-		.sadari-play[data-select="6"] { top:75px; background-position: 70px 100.0%; }
-	</style>
-	<style type="text/css">
-		.test { position:absolute; width:100px; height:100px; background:red; animation:testing 2s; }
-	</style>
+<a href="" class="btn">link</a>
+<a href="" class="btn" disabled>link</a>
+<button class="btn">button</button>
+<button class="btn" disabled>button</button><br><br>
 
-		<div class="sadari-play" data-select="1"></div>
-		<div class="sadari-play" data-select="2"></div>
-		<div class="sadari-play" data-select="3"></div>
-		<div class="sadari-play" data-select="4"></div>
-		<div class="sadari-play" data-select="5"></div>
-		<div class="sadari-play" data-select="6"></div>
-		<div class="sadari-play" data-select="6"></div>
-		<div class="test"></div>
-	
-	<script type="text/javascript">
-		convertStylePxToRem(720/320, 12, $(".test"), ['.sadari-play[data-select="1"]', '.sadari-play[data-select="2"]']);
-		installCssAnimate('testing', {
-			'0%': {
-				top: 0,
-				left: 0
-			},
-			'100%' : {
-				top: '150px',
-				left: '150px'
-			}
-		})
-	</script>
+<button class="btn btn_small">button</button>
+<button class="btn btn_middle">button</button>
+<button class="btn btn_large">button</button>
+<br><br>
+<button class="btn btn_blue">button</button>
+<button class="btn btn_blue" disabled>button</button>
+<button class="btn btn_green">button</button>
+<button class="btn btn_green" disabled>button</button>
+<button class="btn btn_red">button</button>
+<button class="btn btn_red" disabled>button</button>
+<button class="btn btn_lightgray">button</button>
+<button class="btn btn_lightgray" disabled>button</button>
+<button class="btn btn_gray">button</button>
+<button class="btn btn_gray" disabled>button</button>
+<button class="btn btn_darkgray">button</button>
+<button class="btn btn_darkgray" disabled>button</button>
+<br><br>
+<button class="btn btn_outline btn_blue">button</button>
+<button class="btn btn_outline btn_blue" disabled>button</button>
+<button class="btn btn_outline btn_green">button</button>
+<button class="btn btn_outline btn_green" disabled>button</button>
+<button class="btn btn_outline btn_red">button</button>
+<button class="btn btn_outline btn_red" disabled>button</button>
+<button class="btn btn_outline btn_lightgray">button</button>
+<button class="btn btn_outline btn_lightgray" disabled>button</button>
+<button class="btn btn_outline btn_gray">button</button>
+<button class="btn btn_outline btn_gray" disabled>button</button>
+<button class="btn btn_outline btn_darkgray">button</button>
+<button class="btn btn_outline btn_darkgray" disabled>button</button>
+<br><br>
+<button class="btn btn_round">button</button>
+<button class="btn btn_circle">b</button>
+<br><br>
+<button class="btn btn_block">button</button><br><br>
+
+
+<div class="ico"></div>
+
+<input type="text" size="20" class="input"><br><br>
+<input type="text" disabled size="20" class="input"><br><br>
+<input type="password" size="20" class="input"><br><br>
+<input type="password" disabled size="20" class="input"><br><br>
+<input type="checkbox" class="input">
+<label for="">레이블</label>
+<input type="checkbox" disabled class="input">
+<label for="">레이블</label>
+<br><br>
+<input type="radio" class="input">
+<label for="">레이블</label>
+<input type="radio" disabled class="input">
+<label for="">레이블</label>
+<br><br>
+<textarea cols="30" rows="10" class="textarea"></textarea><br><br>
+<textarea cols="30" rows="10" disabled class="textarea"></textarea><br><br>
+<select class="select">
+	<option value="">선택1</option>
+	<option value="">선택2</option>
+</select>
+<select disabled class="select">
+	<option value="">선택1</option>
+	<option value="">선택2</option>
+</select>
+<br><br>
+
+<div class="tab">
+	<ul>
+		<li><a href=""></a></li>
+		<li class="selected"><a href=""></a></li>
+		<li><a href=""></a></li>
+	</ul>
 </div>
+
+<div class="table">
+	<table>
+		<caption></caption>
+		<colgroup>
+			<col style="width:25%">
+			<col style="width:25%">
+			<col style="width:25%">
+			<col style="width:25%">
+		</colgroup>
+		<thead>
+			<tr>
+				<th scope="col">header</th>
+				<th scope="col">header</th>
+				<th scope="col">header</th>
+				<th scope="col">header</th>
+			</tr>
+		</thead>
+		<tbody>
+			<tr>
+				<td>cell</td>
+				<td>cell</td>
+				<td>cell</td>
+				<td>cell</td>
+			</tr>
+			<tr>
+				<td>cell</td>
+				<td>cell</td>
+				<td>cell</td>
+				<td>cell</td>
+			</tr>
+		</tbody>
+	</table>
+</div>
+
+<br><br>
+
+<div class="table table_list">
+	<table>
+		<caption class="hide">리스트형 테이블</caption>
+		<colgroup>
+			<col style="width:20%">
+			<col style="width:20%">
+			<col style="width:20%">
+			<col style="width:20%">
+			<col style="width:20%">
+		</colgroup>
+		<thead>
+			<tr>
+				<th scope="col" rowspan="2">header</th>
+				<th scope="col">header</th>
+				<th scope="col" rowspan="2">header</th>
+				<th scope="col">header</th>
+				<th scope="col" rowspan="2" class="last-child">header</th>
+			</tr>
+			<tr>
+				<th scope="col">header</th>
+				<th scope="col">header</th>				
+			</tr>
+		</thead>
+		<tbody>
+			<tr>
+				<td rowspan="2">cell</td>
+				<td>cell</td>
+				<td rowspan="2">cell</td>
+				<td>cell</td>
+				<td rowspan="2" class="last-child">cell</td>
+			</tr>
+			<tr>
+				<td>cell</td>
+				<td>cell</td>
+			</tr>
+			<tr>
+				<td>cell</td>
+				<td>cell</td>
+				<td>cell</td>
+				<td>cell</td>
+				<td>cell</td>
+			</tr>
+		</tbody>
+		<tfoot>
+			<tr>
+				<td>f-cell</td>
+				<td>f-cell</td>
+				<td>f-cell</td>
+				<td>f-cell</td>
+				<td>f-cell</td>
+			</tr>
+		</tfoot>
+	</table>	
+</div>
+
+<br><br>
+
+<div class="table table_view">
+	<table>
+		<caption class="hide">뷰형 테이블</caption>
+		<colgroup>
+			<col style="width:25%">
+			<col style="width:25%">
+			<col style="width:25%">
+			<col style="width:25%">
+		</colgroup>
+		<tbody>
+			<tr>
+				<th scope="row">header</th>
+				<td>cell</td>
+				<th scope="row">header</th>
+				<td>cell</td>
+			</tr>
+			<tr>
+				<th scope="row">header</th>
+				<td colspan="3">cell</td>
+			</tr>
+			<tr>
+				<th scope="row">header</th>
+				<td colspan="3"><input type="text" name="" id="" class="input"></td>
+			</tr>
+			<tr>
+				<th scope="row">header</th>
+				<td colspan="3"><textarea name="" id="" cols="30" rows="5" class="textarea"></textarea></td>
+			</tr>
+			<tr>
+				<th scope="row">header</th>
+				<td colspan="3">
+					<input type="radio" name="" id="" class="input">
+					<label for="">레이블</label>
+					<input type="radio" name="" id="" class="input">
+					<label for="">레이블</label>
+				</td>
+			</tr>
+			<tr>
+				<th scope="row">header</th>
+				<td colspan="3">
+					<input type="checkbox" name="" id="" class="input">
+					<label for="">레이블</label>
+					<input type="checkbox" name="" id="" class="input">
+					<label for="">레이블</label>
+				</td>
+			</tr>
+			<tr>
+				<th scope="row" rowspan="2">header</th>
+				<td colspan="3">cell</td>
+			</tr>
+			<tr>
+				<td colspan="3">cell</td>
+			</tr>
+			<tr>
+				<th scope="row">header</th>
+				<td colspan="3">
+					<div class="table table_list">
+						<table>
+							<caption class="hide">목록</caption>
+							<colgroup>
+								<col style="width:25%">
+								<col style="width:25%">
+								<col style="width:25%">
+								<col style="width:25%">
+							</colgroup>
+							<thead>
+								<tr>
+									<th scope="col">in-header</th>
+									<th scope="col">in-header</th>
+									<th scope="col">in-header</th>
+									<th scope="col">in-header</th>
+								</tr>
+							</thead>
+							<tbody>
+								<tr>
+									<td>in-cell</td>
+									<td>in-cell</td>
+									<td>in-cell</td>
+									<td>in-cell</td>
+								</tr>
+								<tr class="last-child">
+									<td>in-cell</td>
+									<td>in-cell</td>
+									<td>in-cell</td>
+									<td>in-cell</td>
+								</tr>
+							</tbody>
+						</table>
+					</div>
+				</td>
+			</tr>
+			<tr>
+				<th scope="row">header</th>
+				<td colspan="3">cell</td>
+			</tr>
+			<tr>
+				<th scope="row">header</th>
+				<td colspan="3">
+					<div class="table table_view">
+						<table>
+							<caption class="hide">보기</caption>
+							<colgroup>
+								<col style="width:25%">
+								<col style="width:25%">
+								<col style="width:25%">
+								<col style="width:25%">
+							</colgroup>
+							<tbody>
+								<tr>
+									<th scope="row">header</th>
+									<td>cell</td>
+									<th scope="row">header</th>
+									<td>cell</td>
+								</tr>
+								<tr class="last-child">
+									<th scope="row">header</th>
+									<td colspan="3">cell</td>
+								</tr>
+							</tbody>
+						</table>
+					</div>
+				</td>
+			</tr>
+		</tbody>
+		<tfoot>
+			<tr>
+				<td>f-cell</td>
+				<td>f-cell</td>
+				<td>f-cell</td>
+				<td>f-cell</td>
+			</tr>
+		</tfoot>
+	</table>	
+</div>
+
+<br><br>
+
+<div class="paging">
+	<ol>
+		<li><a href="">처음</a></li>
+		<li><a href="">이전</a></li>
+		<li><a href="">1</a></li>
+		<li><a href="">2</a></li>
+		<li><strong>3</strong></li>
+		<li><a href="">4</a></li>
+		<li><a href="">5</a></li>
+		<li><a href="">다음</a></li>
+		<li><a href="">끝</a></li>
+	</ol>
+</div>
+<br><br>
+
+<div class="col col-3">
+	<div class="btns aLeft" style="width:20%;">
+		<button class="btn">button</button>
+	</div>
+	<div class="paging" style="width:60%;">
+		<ol>
+			<li><a href="">처음</a></li>
+			<li><a href="">이전</a></li>
+			<li><a href="">1</a></li>
+			<li><a href="">2</a></li>
+			<li><strong>3</strong></li>
+			<li><a href="">4</a></li>
+			<li><a href="">5</a></li>
+			<li><a href="">다음</a></li>
+			<li><a href="">끝</a></li>
+		</ol>
+	</div>
+	<div class="btns aRight" style="width:20%;">
+		<button class="btn">button</button>		
+	</div>
+</div>
+<br><br>
 	
 </body>
 </html>

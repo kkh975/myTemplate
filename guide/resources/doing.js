@@ -89,5 +89,5 @@ $(document).ready( function(){
 	});
 
 	// 목록 모두 보기
-	// $worklistListTitSiblings.addClass('on');
+	$worklistListTitSiblings.addClass('on');
 });
