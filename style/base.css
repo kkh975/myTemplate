@@ -2,8 +2,9 @@
 
 
 * { margin:0; padding:0; }
-html, body { font-size:12px; line-height:1em; }
+html, body { font-family:'dotum', sans-serif; font-size:12px; line-height:1em; }
 
+/* html5 */
 article, aside, details, figcaption, figure, footer, header, hgroup, menu, nav, section { display:block; }
 
 fieldset { border:0px; }
@@ -13,18 +14,21 @@ blockquote, q { quotes: none; }
 blockquote:before, 
 blockquote:after, 
 q:before, 
-q:after { content: ''; content: none; }
+q:after { content:''; }
 
+a, 
+button { cursor:pointer; font-size:inherit; font:inherit; color:inherit; }
 a { text-decoration:none; }
-a, button { cursor:pointer; font-size:inherit; font:inherit; color:inherit; }
 
-table { border-collapse: collapse; border-spacing: 0; }
+[disabled]:hover { cursor:none; }
 
-/* IE x button 제거 */
-input[type=text]::-ms-clear { display:none; }
+table { border-collapse:collapse; border-spacing:0; }
 
+input[type="text"],
+input[type="password"],
+textarea { font-family:inherit; }
+textarea { resize-y:none; }
 
-/* 
-TODO, 화면별 사이즈
-TODO, html5 처리 
- */
+input[type=text]::-ms-clear { display:none; } /* IE x button 제거 */
+
+div, p { word-break:break-all; }

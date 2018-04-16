@@ -2,9 +2,9 @@
 
 
 /*
- * 공통
+ * 유틸
  */
-.hide { display:none; }
+.hide { position:absolute; left:-9999em; }
 
 .aLeft { text-align:left; }
 .aRight { text-align:right; }
@@ -91,19 +91,25 @@
 .paddingRight50 { padding-right:50px; }
 
 
+/* 
+ * 가이드 
+ */
+
+
 /*
  * 버튼
  */
-.btn { display:inline-block; padding:0.7rem 1rem 0.8rem; border:none; border:1px solid #488aff; background:#488aff; color:#fff; white-space:nowrap; font-size:1.2rem; }
+.btn { display:inline-block; padding:6px 5px 5px; border:none; border:1px solid #488aff; background:#488aff; color:#fff; word-break:break-all; }
 .btn[disabled] { opacity:0.4; -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=40)"; }
 
-.btn.btn_small { padding: 0.4rem 0.5rem 0.5rem; }
-.btn.btn_middle { padding: 0.7rem 0.5rem 0.8rem; }
-.btn.btn_large { padding: 1.4rem 1.8rem 1.5rem; }
+.btn.btn_small { padding: 4px 3px 3px; }
+.btn.btn_middle { padding: 6px 5px 5px; }
+.btn.btn_large { padding: 10px 10px 9px; }
 
 .btn.btn_round { border-radius:0.5rem; }
 .btn.btn_circle { border-radius:50%; }
-.btn.btn_block { display:block; width:100%; }
+
+.btn.btn_block { display:block; box-sizing:border-box; width:100%; }
 
 .btn.btn_blue { border:1px solid #488aff; background:#488aff; }
 .btn.btn_green { border:1px solid #32db64; background:#32db64; }
@@ -129,7 +135,6 @@
 
 /*
  * grid
- * TODO, flex 추가
  */
 .col > * { /* display:flex; flex-direction:row; */ float:left; }
 .col.col-2 > *  { width:50%; }
@@ -147,21 +152,82 @@
 /*
  * input
  */
-.input {  }
+.input { }
+.input[type="text"],
+.input[type="password"],
+.select,
+.textarea { box-sizing:border-box; border:1px solid #ccc; }
+
+.input[type="text"][disabled],
+.input[type="password"][disabled],
+.select[disabled],
+.textarea[disabled] { background: #eee; }
+
+.input[type="text"]:focus,
+.input[type="password"]:focus,
+.select:focus,
+.textarea:focus { border:1px solid red; outline:none; }
+
+.input[type="text"],
+.input[type="password"] { padding:0 5px; height:26px; line-height:26px; }
+
+.input[type="radio"] + label,
+.input[type="checkbox"] + label { vertical-align:top; }
+
+.input[type="radio"] + label + .input[type="radio"],
+.input[type="checkbox"] + label + .input[type="checkbox"] { margin-left:8px; }
+
+.input[type="radio"] {  }
+.input[type="radio"][disabled] {  }
+.input[type="radio"]:focus {  }
+.input[type="checkbox"] {  }
+.input[type="checkbox"][disabled] {  }
+.input[type="checkbox"]:focus {  }
+
+.textarea { padding:5px; resize:none; overflow-y:auto; }
+.textarea[disabled] {  }
+.select {  }
+.select[disabled] {  }
 
 
 /*
  * table
  */
 .table table { table-layout:fixed; width:100%; }
-.table th,
-.table td { }
-.table tbody th,
-.table tbody td { border-top:1px solid #ddd; border-bottom:1px solid #ddd; }
+.table table > * > tr > * { padding:8px 5px 7px; border-top:1px solid #ddd; border-bottom:1px solid #ddd; }
 
-.table .bl { border-left:1px solid #ddd; }
-.table .br { border-right:1px solid #ddd; }
+.table [rowspan] { border-left:1px solid #ddd; border-right:1px solid #ddd; } /* 셀 세로 합칠 시 구분 선 추가 */
+.table [rowspan]:first-child { border-left:0px; } /* 셀 세로 합칠 시 최좌측 셀 선 제거 */
+.table [rowspan]:last-child { border-right:0px; } /* 셀 세로 합칠 시 최우측 셀 선 제거 */
+.table [rowspan].last-child { border-right:0px; } /* ie8 last-child 지원 안함 */
 
-.table.table_list {  }
+.table.table_list { }
+.table.table_list tbody tr:first-child * { border-top:0px; } /* thead + tbody 중복 선 제거 */
 
-.table.table_form {  }
+.table.table_view { }
+.table.table_view > table > * > tr > th { border-right:1px solid #ddd; } /* 필드 설명 행에 구분 선 */
+.table.table_view > table > * > tr > td + th { border-left:1px solid #ddd; } /* 단이 두개 이상일때 구분 선 */
+
+.table .table { margin:-8px -5px -7px; } /* 테이블 안 테이블 > 간격 제거 */
+.table .table > table > * > tr:first-child > * { border-top:0px; }
+.table .table > table > tbody > tr:last-child > * { border-bottom:0px; }
+.table .table > table > tbody > tr.last-child > * { border-bottom:0px; } /* ie8 last-child 지원 안함 */
+
+
+/* 
+ * tab
+ */
+.tab {  }
+.tab.selected {  }
+
+
+/*
+ * paging
+ */
+.paging { text-align:center; white-space:nowrap; }
+.paging ol { display:inline-block; }
+.paging ol:after { content:''; clear:left; display:block; }
+.paging li { float:left; margin:0 3px; }
+.paging a,
+.paging strong { display:block; box-sizing:border-box; border:1px solid #ddd; padding:5px 4px 4px; min-width:25px; }
+.paging strong { background:#488aff; color:#fff; font-weight:normal; }

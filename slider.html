@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+	<meta charset="UTF-8">
+	<title>Slider | myComponent</title>
+	<link rel="stylesheet" type="text/css" href="style/base.css">
+	<link rel="stylesheet" type="text/css" href="style/default_layout.css">
+	<link rel="stylesheet" type="text/css" href="style/default_component.css">
+	<script src="https://code.jquery.com/jquery-1.12.4.min.js" integrity="sha256-ZosEbRLbNQzLpnKIkEdrPv7lOy9C27hHQ+Xp8a4MxAQ=" crossorigin="anonymous"></script>
+	<script type="text/javascript" src="script/slider.js"></script>
+
+	<!-- guide -->
+	<link rel="stylesheet" type="text/css" href="guide/style.css">
+	<script src="guide/script.js"></script>
+</head>
+<body>
+
+<div class="guide_wrap">
+	<h1 class="guide_h1">Slide</h1>
+	<p class="guide_p"></p>
+
+
+	<h2 class="guide_h2">Test</h2>
+	<div class="guide_test">
+
+		<ul class="slider">
+			<li style="width:300px; height:100px; line-height:100px; font-size:20px; text-align:center; color:#fff; background:red">1</li>
+			<li style="width:300px; height:100px; line-height:100px; font-size:20px; text-align:center; color:#fff; background:green">2</li>
+			<li style="width:300px; height:100px; line-height:100px; font-size:20px; text-align:center; color:#fff; background:blue">3</li>
+		</ul>
+		<button type="button" class="to-prev">이전</button>
+		<button type="button" class="to-next">다음</button>
+		<script>
+			$('.slider').mySlider({
+				$prev: $('.to-prev'),
+				$next: $('.to-next')
+			});
+		</script>
+		
+	</div>
+</div>
+
+</body>
+</html>
