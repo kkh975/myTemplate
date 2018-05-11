@@ -2,7 +2,7 @@
 
 
 * { margin:0; padding:0; }
-html, body { font-family:'dotum', sans-serif; font-size:12px; line-height:1em; }
+html, body { font-family:'dotum', sans-serif; font-size:12px; line-height:1em; word-break:break-all; }
 
 /* html5 */
 article, aside, details, figcaption, figure, footer, header, hgroup, menu, nav, section { display:block; }
@@ -19,6 +19,7 @@ q:after { content:''; }
 a, 
 button { cursor:pointer; font-size:inherit; font:inherit; color:inherit; }
 a { text-decoration:none; }
+button { border:none; background:none; }
 
 [disabled]:hover { cursor:none; }
 
@@ -30,5 +31,3 @@ textarea { font-family:inherit; }
 textarea { resize-y:none; }
 
 input[type=text]::-ms-clear { display:none; } /* IE x button 제거 */
-
-div, p { word-break:break-all; }
