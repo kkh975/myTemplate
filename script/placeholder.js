@@ -12,6 +12,7 @@
  * - activeClassName: {string} 기능 작동시 default:'my_placeholder_active'
  * - installCallback: {null|function} 설치 후 콜백
  * - activeCallback: {null|function} 기능 후 콜백
+ * - defaultTxt: {String} 대체 텍스트, 기본값은 placeholder 셋팅 값
  */
 (function( $, w, d ){
 	var DATA_NAME = 'myPlaceholder';
@@ -23,14 +24,14 @@
 	})();
 
 	function myPlaceholder( elem, _opt ){
-		var $this = $( elem ),
-			initTxt = $this.attr('placeholder');
+		var $this = $( elem );
 
 		var opt = $.extend({
 			isForce: false,
 			activeClassName: 'my_placeholder_active',
 			installCallback: null,
-			activeCallback: null
+			activeCallback: null,
+			defaultTxt: $this.attr('placeholder')
 		}, _opt)
 
 		// 비지니스 로직
@@ -38,7 +39,7 @@
 		function activeCheck( e ) {
 			if (e && e.type == 'focus') {
 				// default 글자와 같다면 빈 값 셋팅
-				if ($this.val() == initTxt) {
+				if ($this.val() == opt.defaultTxt) {
 					$this.val('');
 					$this.addClass( opt.activeClassName );
 				} else {
@@ -47,7 +48,7 @@
 			} else {
 				// 길이가 0이면 default 글자 사용
 				if ($this.val().length == 0) {
-					$this.val( initTxt );
+					$this.val( opt.defaultTxt );
 					$this.addClass( opt.activeClassName );
 				} else {
 					$this.removeClass( opt.activeClassName );
@@ -60,11 +61,16 @@
 			}
 		}
 
+		function onKeyDown( e ) {
+			$this.removeClass( opt.activeClassName );
+		}
+
 		// 이벤트 설치
 		function enable() {
 			$this
 				.on('focus.'+ DATA_NAME, activeCheck)
 				.on('blur.'+ DATA_NAME, activeCheck)
+				.on('keydown.'+ DATA_NAME, onKeyDown)
 
 			activeCheck();
 		}
@@ -73,6 +79,7 @@
 		function disable() {
 			$this.off('focus.'+ DATA_NAME);
 			$this.off('blur.'+ DATA_NAME);
+			$this.off('keydown.'+ DATA_NAME);
 			$this.removeClass( opt.activeClassName );
 		}
 
